@@ -41,9 +41,7 @@ const NavigationBar = () => {
                     <Link to="/" className="navigation-text">
                         Home
                     </Link>
-                    <Link to="/blog" className="navigation-text">
-                        
-                    </Link>
+                    <Link to="/blog" className="navigation-text"></Link>
                 </div>
                 <div>
                     {/* dynamic */}
@@ -59,9 +57,11 @@ const NavigationBar = () => {
                         </div>
                     </div>
                     {/* login Button when no user logged in*/}
-                    <button className="btn inline-flex items-center rounded-md bg-emerald-600 hover:bg-emerald-400 border-0 text-white">
-                        Login
-                    </button>
+                    <Link to="/login">
+                        <button className="btn inline-flex items-center rounded-md bg-emerald-600 hover:bg-emerald-400 border-0 text-white">
+                            Login
+                        </button>
+                    </Link>
                 </div>
             </div>
         </nav>

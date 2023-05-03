@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { GoogleOutlined, GithubOutlined } from "@ant-design/icons";
+// import { GoogleOutlined, GithubOutlined } from "@ant-design/icons";
 
 const Login = () => {
     return (
@@ -58,19 +58,19 @@ const Login = () => {
                                 <a
                                     href="#"
                                     className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-                                    <GoogleOutlined className="mr-2" />
                                     Google
                                 </a>
                                 <a
                                     href="#"
                                     className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow ml-2">
-                                    <GithubOutlined className="mr-2" />
                                     GitHub
                                 </a>
                             </div>
                             <p className="mt-4">
                                 Don't have an account?{" "}
-                                <Link to="/register" className="text-blue-500">
+                                <Link
+                                    to="/registration"
+                                    className="text-blue-500">
                                     Sign Up
                                 </Link>
                             </p>
