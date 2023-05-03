@@ -4,9 +4,11 @@ const NavigationBar = () => {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <nav className="md:flex justify-between items-center px-4 py-5 mx-auto  sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-14">
-            <div className="flex items-center flex-shrink-0 text-white mr-6 lg:mr-72">
+            <div className="flex items-center flex-shrink-0 text-white">
                 <img src={chefLogo} className="w-100 h-10 mr-2" alt="Logo" />
-                <span>Chef's Treat Recipes</span>
+                <span className="text-black text-4xl font-bold">
+                    Chef's Reps
+                </span>
             </div>
             <div className="block lg:hidden">
                 <button
@@ -31,19 +33,19 @@ const NavigationBar = () => {
                 </button>
             </div>
             <div
-                className={`w-full block flex-grow lg:flex lg:items-center lg:w-auto ${
+                className={`w-full block flex-grow text-center lg:flex lg:items-center lg:w-auto ${
                     isOpen ? "block" : "hidden"
                 }`}>
                 <div className="text-sm lg:flex-grow">
                     <a
                         href="#"
                         className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4">
-                        First Link
+                        Home
                     </a>
                     <a
                         href="#"
                         className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4">
-                        Second Link
+                        Blog
                     </a>
                     <a
                         href="#"
@@ -56,9 +58,22 @@ const NavigationBar = () => {
                         Fourth Link
                     </a>
                 </div>
-                <div>
+                <div >
+                     {/* dynamic */}
+                    <div
+                        className="tooltip tooltip-bottom "
+                        data-tip="User name">
+                        {" "}
+                        <div className="avatar">
+                            <div className="w-16 mask mask-hexagon ">
+                                 {/* dynamic */}
+                                <img src="/src/assets/userDefault.jpg" />
+                            </div>
+                        </div>
+                    </div>
+                    {/* login Button when no user logged in*/}
                     <button className="btn inline-flex items-center rounded-md bg-emerald-600 hover:bg-emerald-400 border-0 text-white">
-                        Click Me
+                        Login
                     </button>
                 </div>
             </div>
