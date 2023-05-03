@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import chefLogo from "/src/assets/chefLogo.png";
+import { Link } from "react-router-dom";
 const NavigationBar = () => {
     const [isOpen, setIsOpen] = useState(false);
     return (
@@ -37,36 +38,22 @@ const NavigationBar = () => {
                     isOpen ? "block" : "hidden"
                 }`}>
                 <div className="text-sm lg:flex-grow">
-                    <a
-                        href="#"
-                        className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4">
+                    <Link to="/" className="navigation-text">
                         Home
-                    </a>
-                    <a
-                        href="#"
-                        className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4">
-                        Blog
-                    </a>
-                    <a
-                        href="#"
-                        className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4">
-                        Third Link
-                    </a>
-                    <a
-                        href="#"
-                        className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4">
-                        Fourth Link
-                    </a>
+                    </Link>
+                    <Link to="/blog" className="navigation-text">
+                        
+                    </Link>
                 </div>
-                <div >
-                     {/* dynamic */}
+                <div>
+                    {/* dynamic */}
                     <div
                         className="tooltip tooltip-bottom "
                         data-tip="User name">
                         {" "}
                         <div className="avatar">
                             <div className="w-16 mask mask-hexagon ">
-                                 {/* dynamic */}
+                                {/* dynamic */}
                                 <img src="/src/assets/userDefault.jpg" />
                             </div>
                         </div>

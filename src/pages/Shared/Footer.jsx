@@ -35,7 +35,7 @@ const Footer = () => {
                     <div className="sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:flex justify-between gap-7 px-14 pt-5 pb-5 mx-auto  text-white grid grid-rows-5 text-center md:text-start">
                         <div className="w-72">
                             <h1 className="text-3xl font-bold mb-5">
-                                StarkJobs
+                                Chef's Reps
                             </h1>
                             <p className="font-thin text-gray-400">
                                 There are many variations of passages of Lorem
@@ -104,7 +104,7 @@ const Footer = () => {
                     </div>
                 </footer>
             </div>
-      
+
     );
 };
 
