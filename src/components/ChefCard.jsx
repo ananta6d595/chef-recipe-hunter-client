@@ -12,7 +12,7 @@ const ChefCard = ({ chef }) => {
         number_of_recipes,
         recipe_id,
     } = chef;
-    console.log(chef);
+    // console.log(chef);
 
     return (
         <div className=" border border-b-4 border-b-emerald-500 rounded-md shadow-lg shadow-emerald-300 md:text-left p-2">

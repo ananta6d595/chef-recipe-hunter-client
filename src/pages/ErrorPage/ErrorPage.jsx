@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ErrorPage = () => {
     return (
@@ -6,6 +7,7 @@ const ErrorPage = () => {
             <img
                 src="http://www.veepixel.com/tf/html/sous/assets/images/404.jpg"
                 alt=""
+                className='mx-auto mt-40'
             />
             <h1 className='text-5xl text-center'> 404 </h1>
             <p>page not found</p>
