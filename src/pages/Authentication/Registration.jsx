@@ -6,7 +6,7 @@ const Registration = () => {
     const [error, setError] = useState(null);
 
     const HandelSignUp = (event) => {
-        event.preventDefault(); 
+        event.preventDefault();
         const email = event.target.email.value;
         console.log(email);
     };
@@ -21,7 +21,7 @@ const Registration = () => {
                         </h1>
                     </div>
                     <form
-                        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+                        className="bg-emerald-100 shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4"
                         onSubmit={HandelSignUp}>
                         <div className="mb-4">
                             <label
@@ -30,7 +30,7 @@ const Registration = () => {
                                 Email
                             </label>
                             <input
-                                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                className="appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="email"
                                 name="email"
                                 type="email"
@@ -41,11 +41,26 @@ const Registration = () => {
                         <div className="mb-4">
                             <label
                                 className="block text-gray-700 text-sm font-bold mb-2"
+                                htmlFor="email">
+                                Photo Url
+                            </label>
+                            <input
+                                className="appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="photo"
+                                name="photo"
+                                type="text"
+                                placeholder="Photo Url"
+
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label
+                                className="block text-gray-700 text-sm font-bold mb-2"
                                 htmlFor="password">
                                 Password
                             </label>
                             <input
-                                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                className="appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="password"
                                 name="password"
                                 type="password"
@@ -60,7 +75,7 @@ const Registration = () => {
                                 Confirm
                             </label>
                             <input
-                                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                className="appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="confirm"
                                 name="confirm"
                                 type="password"
@@ -70,7 +85,7 @@ const Registration = () => {
                         </div>
                         <div className="mb-6">
                             <button
-                                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+                                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline w-full"
                                 type="submit">
                                 Sign Up
                             </button>

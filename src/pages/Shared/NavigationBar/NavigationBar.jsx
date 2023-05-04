@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const NavigationBar = () => {
     const [isOpen, setIsOpen] = useState(false);
     return (
-        <nav className="md:flex justify-between items-center px-4 py-5 mx-auto  sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-14">
+        <nav className="md:flex justify-between items-center bg-amber-50 px-4 py-5 mx-auto  sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-14">
             <div className="flex items-center flex-shrink-0 text-white">
                 <img src={chefLogo} className="w-100 h-10 mr-2" alt="Logo" />
                 <span className="text-black text-4xl font-bold">
@@ -41,7 +41,9 @@ const NavigationBar = () => {
                     <Link to="/" className="navigation-text">
                         Home
                     </Link>
-                    <Link to="/blog" className="navigation-text"></Link>
+                    <Link to="/blog" className="navigation-text">
+                        Blog
+                    </Link>
                 </div>
                 <div>
                     {/* dynamic */}
