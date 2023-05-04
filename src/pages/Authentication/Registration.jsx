@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Registration = () => {
     const [error, setError] = useState(null);
+    const { createUser} = useContext(AuthContext);
 
     const HandelSignUp = (event) => {
         event.preventDefault();

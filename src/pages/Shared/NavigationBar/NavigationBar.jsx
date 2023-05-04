@@ -1,8 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import chefLogo from "/src/assets/chefLogo.png";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../provider/AuthProvider";
 const NavigationBar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    // const [toggle, setToggle] = useState(false);
+
+    const { user } = useContext(AuthContext);
+    // if (user) {
+    //     setToggle(true);
+    // }
+    // else {
+    //     setToggle(false)
+    // }
     return (
         <nav className="md:flex justify-between items-center bg-amber-50 px-4 py-5 mx-auto  sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-14">
             <div className="flex items-center flex-shrink-0 text-white">
@@ -46,24 +56,33 @@ const NavigationBar = () => {
                     </Link>
                 </div>
                 <div>
-                    {/* dynamic */}
-                    <div
-                        className="tooltip tooltip-bottom "
-                        data-tip="User name">
-                        {" "}
-                        <div className="avatar">
-                            <div className="w-16 mask mask-hexagon ">
-                                {/* dynamic */}
-                                <img src="/src/assets/userDefault.jpg" />
+                    {/* {console.log("user" , user)} */}
+                    {user && (
+                        <div
+                            className="tooltip tooltip-bottom "
+                            data-tip={user.displayName}>
+                            {" "}
+                            <div className="avatar">
+                                <div className="w-16 mask mask-hexagon ">
+                                    {/* dynamic */}
+                                    <img src="/src/assets/userDefault.jpg" />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    {/* login Button when no user logged in*/}
-                    <Link to="/login">
-                        <button className="btn inline-flex items-center rounded-md bg-emerald-600 hover:bg-emerald-400 border-0 text-white">
-                            Login
-                        </button>
-                    </Link>
+                    )}
+                    {user ? (
+                        <Link to="/logout">
+                            <button className="btn inline-flex items-center rounded-md bg-emerald-600 hover:bg-emerald-400 border-0 text-white">
+                                Logout
+                            </button>
+                        </Link>
+                    ) : (
+                        <Link to="/login">
+                            <button className="btn inline-flex items-center rounded-md bg-emerald-600 hover:bg-emerald-400 border-0 text-white">
+                                Login
+                            </button>
+                        </Link>
+                    )}
                 </div>
             </div>
         </nav>
