@@ -11,7 +11,7 @@ const Blog = () => {
                 </div>
             </div>
             <div className="mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-14 mb-16">
-                <body className="bg-white">
+                <div className="bg-white">
                     <div>
                         {/* <!-- Q-1 --> */}
                         <div className="mb-7">
@@ -151,7 +151,7 @@ const Blog = () => {
                             </p>
                         </div>
                     </div>
-                </body>
+                </div>
             </div>
         </div>
     );

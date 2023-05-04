@@ -21,7 +21,7 @@ const Home = () => {
             .catch((error) => console.log(error));
     }, []);
 
-    console.log(chefs);
+    // console.log(chefs);
     // chefs.map()
     return (
         <div className="min-h-[600px] container mb-40">
