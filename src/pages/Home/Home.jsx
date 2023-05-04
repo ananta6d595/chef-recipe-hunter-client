@@ -45,7 +45,7 @@ const Home = () => {
                                             Chef's Rep
                                         </span>{" "}
                                         <br></br> has your your back with famous
-                                        American chef.
+                                        American chefs.
                                     </h1>
                                 </div>
                             </swiper-slide>
@@ -53,10 +53,13 @@ const Home = () => {
                     })}
                 </swiper-container>
             </div>
-            {/* Chef  section */}
+            {/*  section 2 Chef */}
 
             <div className="lg:text-center my-28 ">
-                <h1 className="font-medium text-2xl lg:text-5xl mb-6"> Our Chef's</h1>
+                <h1 className="font-medium text-2xl lg:text-5xl mb-6">
+                    {" "}
+                    Our Chef's
+                </h1>
                 <p className="text-slate-700 w-72 lg:w-96 md:mx-auto">
                     {" "}
                     Chef's rep has some awesome Chefs around America. Checkout
@@ -68,6 +71,18 @@ const Home = () => {
                         <ChefCard key={chef.id} chef={chef}></ChefCard>
                     ))}
                 </div>
+            </div>
+
+            {/* section 3  */}
+            <div className="lg:text-center">
+                <h1 className="font-medium text-2xl lg:text-5xl mb-6">
+                    Trending recipes
+                </h1>
+            </div>
+            <div className="lg:text-center">
+                <h1 className="font-medium text-2xl lg:text-5xl mb-6">
+                    What our user say
+                </h1>
             </div>
         </div>
     );

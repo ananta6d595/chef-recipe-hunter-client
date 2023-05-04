@@ -4,13 +4,15 @@ import Home from "../pages/Home/Home";
 import LoginLayout from "../layouts/LoginLayout";
 import Login from "../pages/Authentication/Login";
 import Blog from "../pages/Blog/Blog";
-import Recipes from "../pages/Recipes/Recipes";
 import Registration from "../pages/Authentication/Registration";
+import ChefRecipes from "../pages/ChefRecipes/ChefRecipes";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
+        errorElement:<ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/",
@@ -21,9 +23,13 @@ export const router = createBrowserRouter([
                 element: <Blog></Blog>,
             },
             {
-                path: "recipe",
-                element: <Recipes></Recipes>
-            }
+                path: "chef/:id",
+                element: <ChefRecipes></ChefRecipes>,
+                loader: ({ params }) =>
+                    fetch(
+                        `https://chef-recipe-hunter-server-ananta6d595.vercel.app/chefs/${params.id}`
+                    ),
+            },
         ],
     },
     {
@@ -32,11 +38,11 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: "login",
-                element:<Login></Login>
+                element: <Login></Login>,
             },
             {
                 path: "registration",
-                element:<Registration></Registration>
+                element: <Registration></Registration>,
             },
         ],
     },
