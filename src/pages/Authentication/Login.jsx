@@ -1,8 +1,28 @@
-import React from 'react';
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 // import { GoogleOutlined, GithubOutlined } from "@ant-design/icons";
 
 const Login = () => {
+    const [error, setError] = useState(null);
+    const { signInUser } = useContext(AuthContext);
+
+    const HandelSignIn = (event) => {
+        event.preventDefault();
+
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+
+        console.log( email, password);
+
+        signInUser(email, password)
+            .then((res) => {
+                const logInUser = res.user;
+                console.log(logInUser);
+            })
+            .catch((error) => setError(error.message));
+    };
+
     return (
         <>
             <div className="flex h-screen bg-gray-100">
@@ -12,7 +32,9 @@ const Login = () => {
                             Login
                         </h1>
                     </div>
-                    <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                    <form
+                        onSubmit={HandelSignIn}
+                        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                         <div className="mb-4">
                             <label
                                 className="block text-gray-700 text-sm font-bold mb-2"
@@ -39,7 +61,7 @@ const Login = () => {
                                 id="password"
                                 name="password"
                                 type="password"
-                                placeholder="**********"
+                                placeholder="Enter Password"
                                 required
                             />
                         </div>
@@ -74,6 +96,7 @@ const Login = () => {
                                     Sign Up
                                 </Link>
                             </p>
+                            <p className="text-rose-700">{error}</p>
                         </div>
                     </form>
                 </div>

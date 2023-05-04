@@ -2,15 +2,34 @@ import React, { useContext } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import { updateCurrentUser } from "firebase/auth";
 
 const Registration = () => {
     const [error, setError] = useState(null);
-    const { createUser} = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
 
+
+    // setError("")
     const HandelSignUp = (event) => {
         event.preventDefault();
+        const name = event.target.name.value;
         const email = event.target.email.value;
-        console.log(email);
+        const password = event.target.password.value;
+        const confirm = event.target.confirm.value;
+        const photo = event.target.photo.value;
+        console.log(name, email, password, confirm, photo);
+
+        createUser(email, password)
+            .then(res => {
+                const createdUser = res.user
+                console.log("createdUser >>> ", createdUser);
+            })
+            .catch(error => setError(error.message))
+
+        updateUserProfile(name, photo).then(res => {
+            // const upProfile = res;
+            // console.log("upProfile", upProfile);
+            })
     };
 
     return (
@@ -25,6 +44,21 @@ const Registration = () => {
                     <form
                         className="bg-emerald-100 shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4"
                         onSubmit={HandelSignUp}>
+                        <div className="mb-4">
+                            <label
+                                className="block text-gray-700 text-sm font-bold mb-2"
+                                htmlFor="name">
+                                Name
+                            </label>
+                            <input
+                                className="appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="name"
+                                name="name"
+                                type="text"
+                                placeholder="Name"
+                                required
+                            />
+                        </div>
                         <div className="mb-4">
                             <label
                                 className="block text-gray-700 text-sm font-bold mb-2"
@@ -52,7 +86,6 @@ const Registration = () => {
                                 name="photo"
                                 type="text"
                                 placeholder="Photo Url"
-
                             />
                         </div>
                         <div className="mb-4">
@@ -114,6 +147,7 @@ const Registration = () => {
                                     Sign In
                                 </Link>
                             </p>
+                            <p className="text-rose-700">{error}</p>
                         </div>
                     </form>
                 </div>
