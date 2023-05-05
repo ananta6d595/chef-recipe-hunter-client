@@ -2,12 +2,11 @@ import React, { useContext } from "react";
 import { useState } from "react";
 import { Form, Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
-import { updateCurrentUser } from "firebase/auth";
+import { updateCurrentUser, updateProfile } from "firebase/auth";
 
 const Registration = () => {
     const [error, setError] = useState(null);
     const { createUser, updateUserProfile } = useContext(AuthContext);
-
 
     // setError("")
     const HandelSignUp = (event) => {
@@ -17,26 +16,32 @@ const Registration = () => {
         const password = event.target.password.value;
         const confirm = event.target.confirm.value;
         const photo = event.target.photo.value;
-        console.log(name, email, password, confirm, photo);
 
         if (password != confirm) {
-            setError("Confirm password doesn't match!")
+            setError("Confirm password doesn't match!");
+            return;
+        } else if (password.length < 6) {
+            setError("Password must be at least 6 characters");
+            return;
+        } else if (password == null) {
+            setError("Password required");
+            return;
+        } else if (email == null) {
+            setError("Email required");
+            return;
         }
-        // else if () {
-
-        // }
 
         createUser(email, password)
-            .then(res => {
-                const createdUser = res.user
-                console.log("createdUser >>> ", createdUser);
+            .then((res) => {
+                const createdUser = res.user;
+                updateProfile(createdUser, {
+                    // why updateProfile working here not in Auth provider
+                    displayName: name,
+                    photoURL: photo,
+                });
             })
-            .catch(error => setError(error.message))
+            .catch((error) => setError(error.message));
 
-        // updateUserProfile(name, photo).then(res => {
-            // const upProfile = res;
-            // console.log("upProfile", upProfile);
-            // })
     };
 
     return (
@@ -63,7 +68,6 @@ const Registration = () => {
                                 name="name"
                                 type="text"
                                 placeholder="Name"
-                                required
                             />
                         </div>
                         <div className="mb-4">

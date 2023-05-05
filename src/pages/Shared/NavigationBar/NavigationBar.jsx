@@ -4,7 +4,6 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 const NavigationBar = () => {
     const [isOpen, setIsOpen] = useState(false);
-
     const { user, logOut } = useContext(AuthContext);
 
     const handelLogout = () => {
@@ -13,6 +12,7 @@ const NavigationBar = () => {
             .catch((error) => console.log(error.message));
     };
 
+    console.log(user);
     return (
         <nav className="md:flex justify-between items-center px-4 py-5 mx-auto  sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-14">
             <div className="flex items-center flex-shrink-0">
@@ -65,20 +65,21 @@ const NavigationBar = () => {
                         Blog
                     </NavLink>
                 </div>
-                <div>
-                    {/* {console.log("user" , user)} */}
-                    {user && (
+                <div className="flex items-center gap-6">
+                    {user ? (
                         <div
                             className="tooltip tooltip-bottom "
-                            data-tip={user.displayName}>
+                            data-tip={user?.displayName}>
                             {" "}
                             <div className="avatar">
                                 <div className="w-16 mask mask-hexagon ">
-                                    {/* dynamic */}
+                                    <img src={user?.photoURL} className="" />
                                     <img src="/src/assets/userDefault.jpg" />
                                 </div>
                             </div>
                         </div>
+                    ) : (
+                        <></>
                     )}
                     {user ? (
                         // <Link to="/">
