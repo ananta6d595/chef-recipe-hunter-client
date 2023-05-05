@@ -7,6 +7,7 @@ import Blog from "../pages/Blog/Blog";
 import Registration from "../pages/Authentication/Registration";
 import ChefRecipes from "../pages/ChefRecipes/ChefRecipes";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -18,21 +19,18 @@ export const router = createBrowserRouter([
                 path: "/",
                 element: <Home></Home>,
             },
-            // {
-            //     path: "login",
-            //     element: <Login></Login>,
-            // },
-            // {
-            //     path: "registration",
-            //     element: <Registration></Registration>,
-            // },
+
             {
                 path: "blog",
                 element: <Blog></Blog>,
             },
             {
                 path: "chef/:id",
-                element: <ChefRecipes></ChefRecipes>,
+                element: (
+                    <PrivateRoute>
+                        <ChefRecipes></ChefRecipes>
+                    </PrivateRoute>
+                ),
                 loader: ({ params }) =>
                     fetch(
                         `https://chef-recipe-hunter-server-ananta6d595.vercel.app/chefs/${params.id}`

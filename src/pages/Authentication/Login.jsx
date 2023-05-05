@@ -1,24 +1,28 @@
 import React, { useContext, useState } from "react";
-import { Form, Link } from "react-router-dom";
+import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 // import { GoogleOutlined, GithubOutlined } from "@ant-design/icons";
 
 const Login = () => {
     const [error, setError] = useState(null);
     const { signInUser } = useContext(AuthContext);
-
+    const navigate = useNavigate();
+    const location = useLocation();
+    console.log("login page location", location);
+    const from = location.state?.from?.pathname || "/";
     const HandelSignIn = (event) => {
         event.preventDefault();
 
         const email = event.target.email.value;
         const password = event.target.password.value;
 
-        console.log( email, password);
+        console.log(email, password);
 
         signInUser(email, password)
             .then((res) => {
                 const logInUser = res.user;
                 console.log(logInUser);
+                navigate(from, { replace: true });
             })
             .catch((error) => setError(error.message));
     };

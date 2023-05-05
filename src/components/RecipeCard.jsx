@@ -32,15 +32,15 @@ const RecipeCard = ({ single_recipe_id }) => {
                 <div className="card-body ">
                     <h2 className="card-title text-2xl">{recipe_name}</h2>
                     <p className="text-xl bg-slate-200">Ingredients:</p>
-                    <p className="grid grid-cols-2 mb-4">
-                        {ingredients?.map((ingredient) => {
-                            return <p>{ingredient}</p>;
+                    <div className="grid grid-cols-2 mb-4">
+                        {ingredients?.map((ingredient, index) => {
+                            return <p key={index}>{ingredient}</p>;
                         })}
-                    </p>
+                    </div>
                     <p className="text-xl bg-slate-200">Cooking method:</p>
 
                     <p>{cooking_method}</p>
-                    <p>{rating}</p>
+                    <p>Rating: {rating}</p>
                     <button
                         onClick={notify}
                         className={`btn bg-rose-300 hover:bg-rose-500 border-0 ${

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import chefLogo from "/src/assets/chefLogo.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 const NavigationBar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -14,12 +14,10 @@ const NavigationBar = () => {
     };
 
     return (
-        <nav className="md:flex justify-between items-center bg-amber-50 px-4 py-5 mx-auto  sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-14">
-            <div className="flex items-center flex-shrink-0 text-white">
+        <nav className="md:flex justify-between items-center px-4 py-5 mx-auto  sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-14">
+            <div className="flex items-center flex-shrink-0">
                 <img src={chefLogo} className="w-100 h-10 mr-2" alt="Logo" />
-                <span className="text-black text-4xl font-bold">
-                    Chef's Reps
-                </span>
+                <span className=" text-4xl font-bold">Chef's Reps</span>
             </div>
             <div className="block lg:hidden">
                 <button
@@ -47,13 +45,25 @@ const NavigationBar = () => {
                 className={`w-full block flex-grow text-center lg:flex lg:items-center lg:w-auto ${
                     isOpen ? "block" : "hidden"
                 }`}>
-                <div className="text-sm lg:flex-grow">
-                    <Link to="/" className="navigation-text">
+                <div className="lg:flex-grow">
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) =>
+                            isActive
+                                ? "text-xl px-4 text-emerald-600 font-semibold underline"
+                                : "px-4 text-xl text-slate-400"
+                        }>
                         Home
-                    </Link>
-                    <Link to="/blog" className="navigation-text">
+                    </NavLink>
+                    <NavLink
+                        to="/blog"
+                        className={({ isActive }) =>
+                            isActive
+                                ? "text-xl px-4 text-emerald-600 font-semibold underline"
+                                : "px-4 text-xl text-slate-400"
+                        }>
                         Blog
-                    </Link>
+                    </NavLink>
                 </div>
                 <div>
                     {/* {console.log("user" , user)} */}
@@ -72,13 +82,13 @@ const NavigationBar = () => {
                     )}
                     {user ? (
                         // <Link to="/">
-                            <button
-                                onClick={handelLogout}
-                                className="btn inline-flex items-center rounded-md bg-emerald-600 hover:bg-emerald-400 border-0 text-white">
-                                Logout
-                            </button>
-                        // </Link>
+                        <button
+                            onClick={handelLogout}
+                            className="btn inline-flex items-center rounded-md bg-emerald-600 hover:bg-emerald-400 border-0 text-white">
+                            Logout
+                        </button>
                     ) : (
+                        // </Link>
                         <Link to="/login">
                             <button className="btn inline-flex items-center rounded-md bg-emerald-600 hover:bg-emerald-400 border-0 text-white">
                                 Login

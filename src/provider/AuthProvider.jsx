@@ -15,27 +15,30 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     // const user = null;
     const [user, setUser] = useState(null);
-
+    const [loading, setLoading] = useState(true);
 
     const createUser = (email, password) => {
+        setLoading(false);
         return createUserWithEmailAndPassword(auth, email, password);
     };
 
     const signInUser = (email, password) => {
+        setLoading(false);
         return signInWithEmailAndPassword(auth, email, password);
     };
 
     const updateUserProfile = (name, photoURL) => {
+        setLoading(false);
         return updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: photoURL,
-        })
-
+        });
     };
 
     const logOut = () => {
+        setLoading(false);
         return signOut(auth);
-    }
+    };
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
@@ -44,19 +47,22 @@ const AuthProvider = ({ children }) => {
                 : console.log("observer Logged out User");
             console.log("observer Logged In User:", loggedUser);
             setUser(loggedUser);
-        })
+            setLoading(false);
+        });
 
         return () => {
             return unsubscribe();
-        }
-    },[])
+        };
+    }, []);
 
     const authInfo = {
         user,
+        loading,
+        setLoading,
         createUser,
         signInUser,
-        logOut,
         updateUserProfile,
+        logOut,
     };
 
     return (

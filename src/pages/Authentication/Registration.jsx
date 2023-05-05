@@ -19,6 +19,13 @@ const Registration = () => {
         const photo = event.target.photo.value;
         console.log(name, email, password, confirm, photo);
 
+        if (password != confirm) {
+            setError("Confirm password doesn't match!")
+        }
+        // else if () {
+
+        // }
+
         createUser(email, password)
             .then(res => {
                 const createdUser = res.user
