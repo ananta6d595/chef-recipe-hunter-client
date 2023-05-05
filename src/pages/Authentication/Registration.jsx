@@ -6,9 +6,10 @@ import { updateCurrentUser, updateProfile } from "firebase/auth";
 
 const Registration = () => {
     const [error, setError] = useState(null);
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const [success, setSuccess] = useState(null);
+    const { createUser } = useContext(AuthContext);
 
-    // setError("")
+
     const HandelSignUp = (event) => {
         event.preventDefault();
         const name = event.target.name.value;
@@ -16,6 +17,10 @@ const Registration = () => {
         const password = event.target.password.value;
         const confirm = event.target.confirm.value;
         const photo = event.target.photo.value;
+
+
+        setError("")
+        setSuccess("")
 
         if (password != confirm) {
             setError("Confirm password doesn't match!");
@@ -39,6 +44,7 @@ const Registration = () => {
                     displayName: name,
                     photoURL: photo,
                 });
+                setSuccess("Registration Complete")
             })
             .catch((error) => setError(error.message));
 
@@ -159,6 +165,7 @@ const Registration = () => {
                                 </Link>
                             </p>
                             <p className="text-rose-700">{error}</p>
+                            <p className="text-emerald-800">{success}</p>
                         </div>
                     </Form>
                 </div>

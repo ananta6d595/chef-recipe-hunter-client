@@ -8,7 +8,6 @@ const Login = () => {
     const { signInUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-    console.log("login page location", location);
     const from = location.state?.from?.pathname || "/";
     const HandelSignIn = (event) => {
         event.preventDefault();
@@ -16,15 +15,25 @@ const Login = () => {
         const email = event.target.email.value;
         const password = event.target.password.value;
 
-        console.log(email, password);
-
         signInUser(email, password)
             .then((res) => {
                 const logInUser = res.user;
-                console.log(logInUser);
                 navigate(from, { replace: true });
             })
-            .catch((error) => setError(error.message));
+            .catch((error) => {
+
+                setError(error.message);
+
+                if (error.message.includes("email-already-exists")) {
+                    setError("Email already exists");
+                }
+                if (error.message.includes("wrong-password")) {
+                    setError("Wrong password");
+                }
+                if (error.message.includes("auth/user-not-found")) {
+                    setError("User not found");
+                }
+            });
     };
 
     return (

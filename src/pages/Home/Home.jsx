@@ -28,7 +28,7 @@ const Home = () => {
     }, []);
 
     return (
-        <div className="min-h-[600px] container mb-40">
+        <div className="md:min-h-[600px] container mb-40">
             {loader ? (
                 <Spinner></Spinner>
             ) : (
@@ -44,9 +44,9 @@ const Home = () => {
                                 return (
                                     <swiper-slide key={index}>
                                         <img src={image} />
-                                        <div className="absolute h-[300px] w-[650px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg bg-amber-50 bg-opacity-70 blur backdrop-blur"></div>
-                                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
-                                            <h1 className="w-[98%] mx-auto font-bold text-5xl text-center text-emerald-900">
+                                        <div className="absolute h-[200px] md:h-[300px] w-full md:w-[650px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg bg-amber-50 bg-opacity-70 md:blur md:backdrop-blur"></div>
+                                        <div className="absolute top-1/2 left-5 md:left-1/2  md:-translate-x-1/2 -translate-y-1/2 ">
+                                            <h1 className="md:w-[98%]  font-bold text-xl md:text-5xl text-left md:text-center text-emerald-900">
                                                 Want to cook like a Pro?
                                                 <br></br>{" "}
                                                 <span className="text-pink-700">
@@ -75,7 +75,6 @@ const Home = () => {
                         </p>
                         <div className="grid md:grid-cols-2 gap-7 md:mx-10 my-12 ">
                             {chefs?.map((chef) => (
-                                // console.log(chef)
                                 <ChefCard key={chef.id} chef={chef}></ChefCard>
                             ))}
                         </div>

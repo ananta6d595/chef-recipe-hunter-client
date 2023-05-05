@@ -6,7 +6,7 @@ import { AuthContext } from "../provider/AuthProvider";
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
     const location = useLocation();
-    console.log("user in private route", user);
+    
     if (loading) {
         return (
             <div className="flex h-96 w-full">
@@ -25,7 +25,7 @@ const PrivateRoute = ({ children }) => {
     if (user) {
         return children;
     }
-    
+
     return <Navigate state={{ from: location }} to="/login" replace></Navigate>;
 };
 

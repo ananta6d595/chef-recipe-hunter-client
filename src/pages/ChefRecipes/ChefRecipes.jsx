@@ -15,7 +15,6 @@ const ChefRecipes = () => {
         number_of_recipes,
         recipe_id,
     } = chef;
-    // console.log(chef);
 
     return (
         <div className=" container mb-40">

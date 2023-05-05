@@ -18,7 +18,7 @@ const RecipeCard = ({ single_recipe_id }) => {
             .then((data) => setRecipe(data));
     }, []);
 
-    console.log(recipe);
+
 
     return (
         <>
