@@ -12,12 +12,20 @@ export const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
-        errorElement:<ErrorPage></ErrorPage>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/",
                 element: <Home></Home>,
             },
+            // {
+            //     path: "login",
+            //     element: <Login></Login>,
+            // },
+            // {
+            //     path: "registration",
+            //     element: <Registration></Registration>,
+            // },
             {
                 path: "blog",
                 element: <Blog></Blog>,

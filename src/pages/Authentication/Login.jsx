@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Form, Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 // import { GoogleOutlined, GithubOutlined } from "@ant-design/icons";
 
@@ -32,7 +32,7 @@ const Login = () => {
                             Login
                         </h1>
                     </div>
-                    <form
+                    <Form
                         onSubmit={HandelSignIn}
                         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                         <div className="mb-4">
@@ -98,7 +98,7 @@ const Login = () => {
                             </p>
                             <p className="text-rose-700">{error}</p>
                         </div>
-                    </form>
+                    </Form>
                 </div>
             </div>
         </>

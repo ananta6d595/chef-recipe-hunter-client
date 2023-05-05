@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 const NavigationBar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    // const [toggle, setToggle] = useState(false);
 
-    const { user } = useContext(AuthContext);
-    // if (user) {
-    //     setToggle(true);
-    // }
-    // else {
-    //     setToggle(false)
-    // }
+    const { user, logOut } = useContext(AuthContext);
+
+    const handelLogout = () => {
+        logOut()
+            .then()
+            .catch((error) => console.log(error.message));
+    };
+
     return (
         <nav className="md:flex justify-between items-center bg-amber-50 px-4 py-5 mx-auto  sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-14">
             <div className="flex items-center flex-shrink-0 text-white">
@@ -71,11 +71,13 @@ const NavigationBar = () => {
                         </div>
                     )}
                     {user ? (
-                        <Link to="/logout">
-                            <button className="btn inline-flex items-center rounded-md bg-emerald-600 hover:bg-emerald-400 border-0 text-white">
+                        // <Link to="/">
+                            <button
+                                onClick={handelLogout}
+                                className="btn inline-flex items-center rounded-md bg-emerald-600 hover:bg-emerald-400 border-0 text-white">
                                 Logout
                             </button>
-                        </Link>
+                        // </Link>
                     ) : (
                         <Link to="/login">
                             <button className="btn inline-flex items-center rounded-md bg-emerald-600 hover:bg-emerald-400 border-0 text-white">

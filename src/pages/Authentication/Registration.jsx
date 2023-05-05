@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Form, Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { updateCurrentUser } from "firebase/auth";
 
@@ -26,10 +26,10 @@ const Registration = () => {
             })
             .catch(error => setError(error.message))
 
-        updateUserProfile(name, photo).then(res => {
+        // updateUserProfile(name, photo).then(res => {
             // const upProfile = res;
             // console.log("upProfile", upProfile);
-            })
+            // })
     };
 
     return (
@@ -41,7 +41,7 @@ const Registration = () => {
                             Register
                         </h1>
                     </div>
-                    <form
+                    <Form
                         className="bg-emerald-100 shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4"
                         onSubmit={HandelSignUp}>
                         <div className="mb-4">
@@ -149,7 +149,7 @@ const Registration = () => {
                             </p>
                             <p className="text-rose-700">{error}</p>
                         </div>
-                    </form>
+                    </Form>
                 </div>
             </div>
         </>
