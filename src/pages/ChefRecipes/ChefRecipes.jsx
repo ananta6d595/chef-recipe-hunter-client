@@ -17,18 +17,18 @@ const ChefRecipes = () => {
     } = chef;
 
     return (
-        <div className=" container mb-40">
+        <div className=" container mb-12 md:mb-36">
             {/* banner */}
-            <LazyLoad height={600} offset={600} threshold={0.95}>
-                <div className="hero min-h-[600px]">
-                    <img src={chef_picture} className="h-[600px] w-full" />
-                    <div className="hero-overlay bg-opacity-30"></div>
+            <LazyLoad offset={600} threshold={0.95}>
+                <div className="hero md:min-h-[600px]">
+                    <img src={chef_picture} className="md:h-[600px] w-full" />
+                    <div className="hero-overlay bg-opacity-60 md:bg-opacity-30"></div>
                     <div className="ms-6 text-neutral-content">
-                        <div className="w-[50%]">
-                            <h1 className="mb-5 text-6xl font-bold  text-start">
+                        <div className="md:w-[50%]">
+                            <h1 className="mb-5 text-3xl md:text-6xl font-bold  text-start">
                                 {chef_name}
                             </h1>
-                            <p className="mb-5 text-start text-xl">
+                            <p className="md:mb-5 text-start md:text-xl">
                                 {description}{" "}
                             </p>
                             <div className="font-bold flex gap-1">
@@ -48,7 +48,8 @@ const ChefRecipes = () => {
             </LazyLoad>
             {/* recipes */}
 
-            <div className="grid md:grid-cols-2 gap-7 md:mx-10 my-12 ">
+            <h1 className="text-5xl font-bold mt-28 mb-6 underline text-emerald-700 text-center">Recipes</h1>
+            <div className="grid md:grid-cols-2 gap-8 md:mx-10 my-12 ">
                 {recipe_id.map((single_recipe_id) => {
                     return (
                         <RecipeCard
@@ -60,13 +61,5 @@ const ChefRecipes = () => {
         </div>
     );
 };
-
-// const ChefRecipes = () => (
-//     <div>
-//         <LazyLoad height={762} offset={300} threshold={0.95}>
-//             <img src="http://apod.nasa.gov/apod/image/1502/HDR_MVMQ20Feb2015ouellet1024.jpg" />
-//         </LazyLoad>
-//     </div>
-// );
 
 export default ChefRecipes;
