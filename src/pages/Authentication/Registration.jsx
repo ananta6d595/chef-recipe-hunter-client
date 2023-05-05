@@ -143,21 +143,7 @@ const Registration = () => {
                             </button>
                         </div>
                         <div className="text-center">
-                            <span className="text-gray-700">
-                                Or Register with:
-                            </span>
-                            <div className="flex justify-center mt-2">
-                                <a
-                                    href="#"
-                                    className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-                                    Google
-                                </a>
-                                <a
-                                    href="#"
-                                    className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow ml-2">
-                                    GitHub
-                                </a>
-                            </div>
+
                             <p className="mt-4">
                                 Already have an account?{" "}
                                 <Link to="/login" className="text-blue-500">
