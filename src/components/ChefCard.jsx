@@ -21,7 +21,7 @@ const ChefCard = ({ chef }) => {
             <h1>{chef_name}</h1>
             <p>Experience: {experience}</p>
             <p>Recipes: {number_of_recipes}</p>
-            <p>Likes(chage to stars): {likes}</p>
+            <p>Likes: {likes}</p>
 
             <Link to={`/chef/${id}`}>
                 <button className="btn bg-white border-2 border-emerald-600 hover:border-0 hover:bg-emerald-500 text-emerald-600 hover:text-white">
